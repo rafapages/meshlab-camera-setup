@@ -1,1 +1,7 @@
-This is a simple python script which transforms a file with camera calibration parameters (intrinsic, extrinic and position) into a Meshlab scene.
+This is a simple python script which transforms a file with camera calibration parameters (intrinsic, extrinsic and position) into a Meshlab scene.
+
+The script uses three arguments: 
+1. 3D mesh file name
+2. File with calibration parameteres as in the sample file provided
+3. Name of the output Meshlab scene file
+
