@@ -1,0 +1,1 @@
+This is a simple python script which transforms a file with camera calibration parameters (intrinsic, extrinic and position) into a Meshlab scene.
