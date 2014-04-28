@@ -59,7 +59,7 @@ for i in range(0, numCam):
   centerX = float(intr[2])
   centerY = float(imHeight) - float(intr[5])
   focal = float(intr[0])
-  outFile.write(" CenterPx=\"%.3e %.3e\" FocalMm=\"%.16e\"" % (centerX, centerY, focal))
+  outFile.write(" CenterPx=\"%d %d\" FocalMm=\"%.16e\"" % (int(centerX), int(centerY), focal))
   # The rotation matrix is all inversed except for the first vector
   outFile.write(" RotationMatrix=\"%.16e %.16e %.16e 0 %.16e %.16e %.16e 0 %.16e %.16e %.16e 0 0 0 0 1\"/>\n" % (float(extr[0]), float(extr[1]), float(extr[2]), -float(extr[3]), -float(extr[4]), -float(extr[5]), -float(extr[6]), -float(extr[7]), -float(extr[8])))
   outFile.write("   <Plane semantic=\"\" fileName=\"%02d.png\"/>\n" % (i+1))
