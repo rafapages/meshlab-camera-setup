@@ -5,8 +5,6 @@ meshName = sys.argv[1]
 inName = sys.argv[2]
 outName = sys.argv[3]
 
-# outFile = open("scene.mlp", "w")
-# inFile = open("calibration_tmp_upm.txt", "r")
 outFile = open(outName, "w")
 inFile = open(inName, "r")
 
@@ -39,11 +37,11 @@ outFile.write("<MeshLabProject>\n")
 outFile.write(" <MeshGroup>\n")
 outFile.write("  <MLMesh label=\"%s\" filename=\"out3.obj\">\n" % (meshName))
 outFile.write("   <MLMatrix44>\n")
-outFile.write("1 0 0 0\n")
-outFile.write("0 1 0 0\n")
-outFile.write("0 0 1 0\n")
-outFile.write("0 0 0 1\n")
-outFile.write("   </MLMatrix44>\n")
+outFile.write("1 0 0 0 \n")
+outFile.write("0 1 0 0 \n")
+outFile.write("0 0 1 0 \n")
+outFile.write("0 0 0 1 \n")
+outFile.write("</MLMatrix44>\n")
 outFile.write("  </MLMesh>\n")
 outFile.write(" </MeshGroup>\n")
 
@@ -62,7 +60,8 @@ for i in range(0, numCam):
   centerY = float(imHeight) - float(intr[5])
   focal = float(intr[0])
   outFile.write(" CenterPx=\"%.3e %.3e\" FocalMm=\"%.16e\"" % (centerX, centerY, focal))
-  outFile.write(" RotationMatrix=\"%.16e %.16e %.16e 0 %.16e %.16e %.16e 0 %.16e %.16e %.16e 0 0 0 0 1\"/>\n" % (-float(extr[0]), -float(extr[1]), -float(extr[2]), float(extr[3]), float(extr[4]), float(extr[5]), float(extr[6]), float(extr[7]), float(extr[8])))
+  # The rotation matrix is all inversed except for the first vector
+  outFile.write(" RotationMatrix=\"%.16e %.16e %.16e 0 %.16e %.16e %.16e 0 %.16e %.16e %.16e 0 0 0 0 1\"/>\n" % (float(extr[0]), float(extr[1]), float(extr[2]), -float(extr[3]), -float(extr[4]), -float(extr[5]), -float(extr[6]), -float(extr[7]), -float(extr[8])))
   outFile.write("   <Plane semantic=\"\" fileName=\"%02d.png\"/>\n" % (i+1))
   outFile.write("  </MLRaster>\n\n")
 
