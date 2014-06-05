@@ -35,7 +35,7 @@ for i in range(1, numCam+1):
 outFile.write("<!DOCTYPE MeshLabDocument>\n")
 outFile.write("<MeshLabProject>\n")
 outFile.write(" <MeshGroup>\n")
-outFile.write("  <MLMesh label=\"%s\" filename=\"out3.obj\">\n" % (meshName))
+outFile.write("  <MLMesh label=\"%s\" filename=\"%s\">\n" % (meshName, meshName))
 outFile.write("   <MLMatrix44>\n")
 outFile.write("1 0 0 0 \n")
 outFile.write("0 1 0 0 \n")
