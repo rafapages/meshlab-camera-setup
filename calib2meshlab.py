@@ -5,7 +5,7 @@ if len(sys.argv) != 5:
   print "Usage: " + sys.argv[0] + " <meshFileName> <calibrationFileName> <imageListFileName> <outputSceneFileName.mlp>"
   exit()
 
-# Taking input arguments
+# Reading input arguments
 meshName = sys.argv[1]
 inName = sys.argv[2]
 imageList = sys.argv[3]
@@ -78,7 +78,7 @@ for i in range(0, numCam):
   outFile.write("   <VCGCamera TranslationVector=\"%.16e %.16e %.16e\"" % (-float(pos[0]), -float(pos[1]), -float(pos[2])))
   outFile.write(" LensDistortion=\"0 0\" ViewportPx=\"%d %d\" PixelSizeMm=\"1 1\"" % (wid, hei))
   centerX = float(intr[2])
-  centerY = float(imHeight) - float(intr[5])
+  centerY = float(hei) - float(intr[5])
   focal = float(intr[0])
   outFile.write(" CenterPx=\"%d %d\" FocalMm=\"%.16e\"" % (int(centerX), int(centerY), focal))
   # The rotation matrix is all inversed except for the first vector

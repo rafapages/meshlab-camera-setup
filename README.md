@@ -8,4 +8,4 @@ The script uses four arguments:
 3. File with the list of images names used for texturing
 4. Name of the output Meshlab scene file
 
-The inverse transformation will be available soon
+The inverse transformation will be available soon.
