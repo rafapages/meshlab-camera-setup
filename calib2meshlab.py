@@ -83,7 +83,6 @@ for i in range(0, numCam):
   outFile.write(" CenterPx=\"%d %d\" FocalMm=\"%.16e\"" % (int(centerX), int(centerY), focal))
   # The rotation matrix is all inversed except for the first vector
   outFile.write(" RotationMatrix=\"%.16e %.16e %.16e 0 %.16e %.16e %.16e 0 %.16e %.16e %.16e 0 0 0 0 1\"/>\n" % (float(extr[0]), float(extr[1]), float(extr[2]), -float(extr[3]), -float(extr[4]), -float(extr[5]), -float(extr[6]), -float(extr[7]), -float(extr[8])))
-  # outFile.write("   <Plane semantic=\"\" fileName=\"%02d.png\"/>\n" % (i+1))
   outFile.write("   <Plane semantic=\"\" fileName=\"%s\"/>\n" % (imName))
   outFile.write("  </MLRaster>\n\n")
 
@@ -91,5 +90,7 @@ for i in range(0, numCam):
 outFile.write(" </RasterGroup>\n")
 outFile.write("</MeshLabProject>\n")
 
+
 outFile.close()
 inFile.close()
+imageListFile.close()

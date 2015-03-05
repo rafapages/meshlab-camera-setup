@@ -104,18 +104,26 @@ for i in range(0,imageNum):
 	outImageListFile.write(allImages[i] + "\n")
 
 	currentCam = allMatrices[i]
+	focal = float(currentCam[5])
 	imWidth = int(currentCam[2][0])
 	imHeight = int(currentCam[2][1])
 	pixCenterX = int(currentCam[4][0])
 	pixcenterY = imHeight - int(currentCam[4][1])
+	extrinsic = []
+	for i in range(0, len(currentCam[6])):
+		extrinsic.append(float(currentCam[6][i]))
+
+	position = []
+	for i in range(0, len(currentCam[0])):
+		position.append(float(currentCam[0][i]))
 
 	# current camera parameters
-	outCalibFile.write("%s 0 %d 0 %s %d 0 0 1\n" % (currentCam[5], pixCenterX, currentCam[5], pixcenterY ))
-
-	# IN PROGRESS...
-
+	outCalibFile.write("%.7e 0 %d 0 %.7e %d 0 0 1 %.7e %.7e %.7e %.7e %.7e %.7e %.7e %.7e %.7e %.7e %.7e %.7e %d %d\n" % 
+		(focal, pixCenterX, focal, pixcenterY, extrinsic[0], extrinsic[1], extrinsic[2], -extrinsic[4], -extrinsic[5], -extrinsic[6], -extrinsic[8], -extrinsic[9], -extrinsic[10], -position[0], -position[1], -position[2], imWidth, imHeight))
 
 
 
-
+inFile.close()
+outCalibFile.close()
+outImageListFile.close()
 
