@@ -104,6 +104,7 @@ for i in range(0,imageNum):
 	outImageListFile.write(allImages[i] + "\n")
 
 	currentCam = allMatrices[i]
+	print "asdfasdf",currentCam[5]
 	focal = float(currentCam[5])
 	imWidth = int(currentCam[2][0])
 	imHeight = int(currentCam[2][1])
