@@ -99,7 +99,7 @@ for i in range(0,imageNum):
 
  	# Position
  	position = []
- 	translationVector = camMatrices[0].split()
+ 	translationVector = currentCam[0].split()
  	for i in range(0,3):
  		position.append(float(translationVector[i]))
 
